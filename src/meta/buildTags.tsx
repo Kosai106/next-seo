@@ -248,18 +248,44 @@ const buildTags = (config: BuildTagsParams) => {
         />,
       );
     }
-  }
-
-  if (config.facebook) {
-    if (config.facebook.appId) {
+    if (config.twitter.label1 && config.twitter.data1) {
       tagsToRender.push(
         <meta
-          key="fb:app_id"
-          property="fb:app_id"
-          content={config.facebook.appId}
+          key="twitter:label1"
+          name="twitter:label1"
+          content={config.twitter.label1}
+        />,
+        <meta
+          key="twitter:data1"
+          name="twitter:data1"
+          content={config.twitter.data1}
         />,
       );
     }
+    if (config.twitter.label2 && config.twitter.data2) {
+      tagsToRender.push(
+        <meta
+          key="twitter:label2"
+          name="twitter:label2"
+          content={config.twitter.label2}
+        />,
+        <meta
+          key="twitter:data2"
+          name="twitter:data2"
+          content={config.twitter.data2}
+        />,
+      );
+    }
+  }
+
+  if (config.facebook?.appId) {
+    tagsToRender.push(
+      <meta
+        key="fb:app_id"
+        property="fb:app_id"
+        content={config.facebook.appId}
+      />,
+    );
   }
 
   if (config.openGraph?.title || updatedTitle) {

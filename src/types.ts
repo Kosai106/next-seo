@@ -287,11 +287,30 @@ export interface OpenGraphAudio {
   type?: string;
 }
 
-export interface Twitter {
-  handle?: string;
-  site?: string;
-  cardType?: string;
-}
+export type Twitter = {
+  handle?: `@${string}`;
+  site?: `@${string}`;
+  cardType?: 'summary' | 'summary_large_image' | 'app' | 'player';
+} & (
+  | {
+      label1: string;
+      data1: string;
+    }
+  | {
+      label1?: undefined;
+      data1?: undefined;
+    }
+) &
+  (
+    | {
+        label2: string;
+        data2: string;
+      }
+    | {
+        label2?: undefined;
+        data2?: undefined;
+      }
+  );
 
 interface MobileAlternate {
   media: string;
